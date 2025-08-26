@@ -15,14 +15,7 @@ pipeline {
         }
         stage ('Deploy with Ansible') {
             steps{
-                sh '''
-                    cd  /ansible
-                    sh 'docker exec ansible \
-                    ansible-playbook \
-                        -i inventory \
-                        playbooks/test.yml \
-                        --extra-vars "build_number= ${BUILD_NUMBER}"'
-                '''
+                sh 'docker exec ansible ansible-playbook /ansible/playbooks/test.yml --extra-vars "build_number=${BUILD_NUMBER}"'
             }
         }
     }
