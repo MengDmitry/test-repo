@@ -17,11 +17,11 @@ pipeline {
             steps{
                 sh '''
                     cd  /ansible
-                    docker exec ansible \
+                    sh 'docker exec ansible \
                     ansible-playbook \
                         -i inventory \
                         playbooks/test.yml \
-                        --extra-vars "build_number= ${BUILD_NUMBER}"
+                        --extra-vars "build_number= ${BUILD_NUMBER}"'
                 '''
             }
         }
