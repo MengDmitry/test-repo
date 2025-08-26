@@ -7,13 +7,15 @@ pipeline {
 
     stages {
         stage ('Test Ansible') {
-            sh '''
-                cd  /ansible
-                ansible-playbook \
-                    -i inventory \
-                    playbooks/test.yml \
-                    --extra-vars "build_number= ${BUILD_NUMBER}"
-            '''
+            steps{
+                sh '''
+                    cd  /ansible
+                    ansible-playbook \
+                        -i inventory \
+                        playbooks/test.yml \
+                        --extra-vars "build_number= ${BUILD_NUMBER}"
+                '''
+            }
         }
     }
 }
