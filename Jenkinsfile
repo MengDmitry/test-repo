@@ -17,6 +17,7 @@ pipeline {
             steps{
                 sh '''
                     cd  /ansible
+                    ansible --version
                     ansible-playbook \
                         -i inventory \
                         playbooks/test.yml \
