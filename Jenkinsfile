@@ -6,7 +6,14 @@ pipeline {
     }
 
     stages {
-        stage ('Test Ansible') {
+        stage('Checkout') {
+            steps {
+                script {
+                    echo "Клонируем репозиторий..."
+                }
+            }
+        }
+        stage ('Deploy with Ansible') {
             steps{
                 sh '''
                     cd  /ansible
