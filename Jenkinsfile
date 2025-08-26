@@ -7,13 +7,13 @@ pipline {
 
     stages {
         stage ('Test Ansible') {
-            sh ```
+            sh '''
                 cd  /ansible
                 ansible-playbook \
                     -i inventory \
                     playbooks/test.yml \
                     --extra-vars "build_number= ${BUILD_NUMBER}"
-            ```
+            '''
         }
     }
 }
